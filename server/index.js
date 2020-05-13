@@ -49,9 +49,10 @@ app.get('/api/products/:product_id/reviews/:review_id', (req, res) => {
 
 app.put('/api/products/:product_id/reviews/:review_id', (req, res) => {
   const data = req.body;
+  const url = `http://localhost:8080/api/products/${req.params.product_id}/reviews/${req.params.review_id}`;
   axios({
     method: 'PUT',
-    url: `http://localhost:8080/api/products/${req.params.product_id}/reviews/${req.params.review_id}`,
+    url,
     data,
   })
     .then((response) => {
