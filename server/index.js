@@ -32,4 +32,10 @@ app.get('/api/images/:id', (req, res) => {
     .catch((error) => res.status(500).send(error));
 });
 
+app.get('/api/products/:product_id/reviews', (req, res) => {
+  axios.get(`http://localhost:8080/api/products/${req.params.product_id}/reviews`)
+    .then((response) => res.status(200).send(response))
+    .catch((error) => res.status(500).send(error));
+});
+
 app.listen(PORT, () => `Server listening on port ${3000}`);
