@@ -38,4 +38,16 @@ app.get('/api/products/:product_id/reviews', (req, res) => {
     .catch((error) => res.status(500).send(error));
 });
 
+app.get('/api/products/:product_id/reviews/:review_id', (req, res) => {
+  axios.get(`http://localhost:8080/api/products/${req.params.product_id}/reviews/${req.params.review_id}`)
+    .then((response) => res.status(200).send(response))
+    .catch((error) => res.status(500).send(error));
+});
+
+app.put('/api/products/:product_id/reviews/:review_id', (req, res) => {
+  axios.put(`http://localhost:8080/api/products/${req.params.product_id}/reviews/${req.params.review_id}`)
+    .then((response) => res.status(200).send(response))
+    .catch((error) => res.status(500).send(error));
+});
+
 app.listen(PORT, () => `Server listening on port ${3000}`);
